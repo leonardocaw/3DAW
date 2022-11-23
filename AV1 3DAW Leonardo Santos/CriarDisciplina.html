@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script>
+function enviarForm() {
+        let pNome = document.getElementById("Nome").value;
+        let pId = document.getElementById("Id").value;
+        let pPeriodo = document.getElementById("Período").value;
+        let pPreRequisito = document.getElementById("Prérequisito").value;
+        let pCréditos = document.getElementById("Créditos").value;
+            xmlHttp.onreadystatechange = function() {
+                console.log("mudou status: " + this.readyState);
+                if (this.readyState == 4 && this.status == 200) {
+             console.log("Chegou resposta: " + this.responseText)
+            document.getElementById("msg").innerHTML = this.responseText;
+    }
+}
+     xmlHttp.open("GET", "http://localhost/AV1%203DAW%20Leonardo%20Santos/CriarDisciplina.php" + pNome +
+    "&Id=" + pId + "&Período=" + pPeríodo + "&Prérequisito=" + Prérequisito + "&Crédito=" + pCrédito);
+    xmlHttp.send();
+    console.log("Enviei requisição");
+}
+</script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Criar Disciplina</title>
+    <script src="Main.js"></script>
+</head>
+<body>
+    <form action="CriarDisciplina.php" method="POST" >
+        Nome:<input type="text" name="Nome"><br>
+        Id:<input type="text" name="Id"><br>
+        Periodo:<input type="text" name="Periodo"><br>
+        Pré requisitos:<input type="text" name="IdPreRequisitos"><br>
+        Creditos:<input type="text" name="Creditos"><br>
+        <input type="button" name="botao" value="enviar" onclick="enviarForm();">
+    </form> 
+</body>
+</html>
